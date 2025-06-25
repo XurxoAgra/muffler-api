@@ -1,0 +1,50 @@
+services:
+    webserver:
+        build:
+            context: ./docker/develop/bin/webserver
+            dockerfile: Dockerfile
+            args:
+                PHP_VERSION: 8.3
+        container_name: '${CONTAINER_SUFFIX}-webserver'
+        env_file:
+            - docker/develop/.env
+        restart: 'always'
+        ports:
+            - "${PORT_HTTP}:80"
+            - "${PORT_HTTPS}:443"
+        links:
+            - mysql
+        environment:
+            - PHP_IDE_CONFIG=serverName=localhost
+            - PHP_VERSION=8.3
+        volumes:
+            - ./:/var/www/html
+            - ./docker/develop/config/php/php.ini:/usr/local/etc/php/php.ini
+            - ./docker/develop/config/vhosts:/etc/apache2/sites-enabled
+            - ./var/log/docker/apache2:/var/log/apache2
+        secrets:
+            - host_ssh_key
+        networks:
+          - muffler-api-network
+    mysql:
+        build:
+            context: ./docker/develop/bin/mysql
+        container_name: '${CONTAINER_SUFFIX}-mysql'
+        restart: 'always'
+        ports:
+            - '${PORT_DATABASE}:3306'
+        command: --max_allowed_packet=32505856
+        volumes:
+            - ./var/data/docker/mysql:/var/lib/mysql
+            - ./var/log/docker/mysql:/var/log/mysql
+            - ./docker/develop/bin/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+        user: root
+        environment:
+            MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+        networks:
+          - muffler-api-network
+secrets:
+    host_ssh_key:
+        file: ~/.ssh/id_rsa
+networks:
+    muffler-api-network:

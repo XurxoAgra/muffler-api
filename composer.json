@@ -15,6 +15,7 @@
         "symfony/yaml": "7.3.*"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.75"
     },
     "config": {
         "allow-plugins": {
@@ -46,6 +47,8 @@
         "symfony/polyfill-php82": "*"
     },
     "scripts": {
+        "fix": "php-cs-fixer fix",
+        "fix:check": "php-cs-fixer fix --dry-run --diff",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

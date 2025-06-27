@@ -6,6 +6,7 @@
 .env.*.local
 /phpunit.result.cache
 /.phpunit.result.cache
+.composer
 
 # Logs
 /log/
@@ -37,15 +38,3 @@ composer.lock
 # Docker / Containers
 .docker/
 docker-compose.override.yml
-
-# Node (si usas Webpack Encore)
-node_modules/
-public/build/
-public/hot
-public/assets/
-yarn.lock
-pnpm-lock.yaml
-package-lock.json
-
-# Git internals
-*.orig

@@ -1,9 +1,51 @@
-###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
+# Symfony & PHP
 /var/
 /vendor/
-###< symfony/framework-bundle ###
+/.env.local
+.env.test.local
+.env.*.local
+/phpunit.result.cache
+/.phpunit.result.cache
+
+# Logs
+/log/
+/*.log
+*.log
+
+# Cache
+/var/cache/
+/var/log/
+
+# Test coverage
+/coverage/
+/clover.xml
+
+# PHP-CS-Fixer
+.php-cs-fixer.cache
+
+# IDEs & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.lock
+
+# Docker / Containers
+.docker/
+docker-compose.override.yml
+
+# Node (si usas Webpack Encore)
+node_modules/
+public/build/
+public/hot
+public/assets/
+yarn.lock
+pnpm-lock.yaml
+package-lock.json
+
+# Git internals
+*.orig

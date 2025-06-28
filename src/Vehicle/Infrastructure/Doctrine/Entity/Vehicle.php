@@ -5,22 +5,24 @@ declare(strict_types=1);
 namespace Muffler\Vehicle\Infrastructure\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
+
 #[ORM\Entity]
 class Vehicle
 {
     public function __construct(
         #[ORM\Id]
-        #[ORM\Column(type: 'string', length: 36)]
-        private string $id,
-        #[ORM\Column(type: 'string')]
+        #[ORM\Column(type: 'uuid', unique: true)]
+        private UuidInterface $id,
+        #[ORM\Column(name: 'brand', type: 'string', length: 255)]
         private string $brand,
-        #[ORM\Column(type: 'string')]
+        #[ORM\Column(name: 'model', type: 'string', length: 255)]
         private string $model,
         #[ORM\Column(type: 'integer', nullable: true)]
         private ?int $year,
-        #[ORM\Column(type: 'string', unique: true, nullable: true)]
+        #[ORM\Column(type: 'string', length: 17, unique: true, nullable: true)]
         private ?string $chassis,
-        #[ORM\Column(type: 'string', nullable: true)]
+        #[ORM\Column(name: 'color', type: 'string', length: 255)]
         private ?string $color,
         #[ORM\Column(type: 'datetime_immutable')]
         private \DateTimeImmutable $createdAt,
@@ -31,12 +33,12 @@ class Vehicle
     ) {
     }
 
-    public function getId(): string
+    public function getId(): UuidInterface
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(UuidInterface $id): void
     {
         $this->id = $id;
     }

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Muffler\Vehicle\Domain\ValueObject;
 
-class Chassis
+final readonly class Chassis
 {
     private const VIN_LENGTH = 17;
     private const INVALID_CHARS = ['I', 'O', 'Q'];
 
     public function __construct(
-        private string $value,
+        private ?string $value,
     ) {
         $this->validate($value);
     }
@@ -26,7 +26,7 @@ class Chassis
         }
     }
 
-    public function __toString(): string
+    public function toString(): string
     {
         return $this->value;
     }

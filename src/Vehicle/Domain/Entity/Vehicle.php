@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Muffler\Vehicle\Domain\Entity;
 
 use Muffler\Vehicle\Domain\ValueObject\Chassis;
-use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 final readonly class Vehicle
 {
     public function __construct(
-        private Uuid $uuid,
+        private UuidInterface $uuid,
         private string $brand,
         private string $model,
         private ?int $year,
-        private Chassis $chassis,
+        private ?Chassis $chassis,
         private ?string $color,
         private \DateTimeImmutable $createdAt,
         private \DateTimeImmutable $updatedAt,
@@ -22,7 +22,7 @@ final readonly class Vehicle
     ) {
     }
 
-    public function getUuid(): Uuid
+    public function getId(): UuidInterface
     {
         return $this->uuid;
     }
@@ -42,7 +42,7 @@ final readonly class Vehicle
         return $this->year;
     }
 
-    public function getChassis(): Chassis
+    public function getChassis(): ?Chassis
     {
         return $this->chassis;
     }

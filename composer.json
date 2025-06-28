@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "*",
+        "doctrine/doctrine-migrations-bundle": "^3.4",
         "doctrine/orm": "^3.4",
         "ramsey/uuid": "^4.9",
         "ramsey/uuid-doctrine": "^2.1",
@@ -32,12 +33,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "Muffler\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "Muffler\\Tests\\": "tests/"
         }
     },
     "replace": {

@@ -1,0 +1,10 @@
+doctrine:
+    orm:
+        mappings:
+            Vehicle:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Vehicle/Infrastructure/Doctrine/Entity'
+                prefix: 'Muffler\Vehicle\Infrastructure\Doctrine\Entity'
+                alias: Vehicle
+

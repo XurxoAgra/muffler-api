@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Vehicle\Domain\ValueObject;
+namespace Muffler\Vehicle\Domain\ValueObject;
 
 class Chassis
 {

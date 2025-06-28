@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Vehicle\Domain\Entity;
+namespace Muffler\Vehicle\Domain\Entity;
 
-use App\Vehicle\Domain\ValueObject\Chassis;
+use Muffler\Vehicle\Domain\ValueObject\Chassis;
 use Ramsey\Uuid\Uuid;
 
 final readonly class Vehicle
@@ -18,7 +18,7 @@ final readonly class Vehicle
         private ?string $color,
         private \DateTimeImmutable $createdAt,
         private \DateTimeImmutable $updatedAt,
-        private \DateTimeImmutable $deletedAt,
+        private ?\DateTimeImmutable $deletedAt,
     ) {
     }
 
@@ -62,7 +62,7 @@ final readonly class Vehicle
         return $this->updatedAt;
     }
 
-    public function getDeletedAt(): \DateTimeImmutable
+    public function getDeletedAt(): ?\DateTimeImmutable
     {
         return $this->deletedAt;
     }

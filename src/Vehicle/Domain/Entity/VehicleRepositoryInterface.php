@@ -6,12 +6,9 @@ use Ramsey\Uuid\Uuid;
 
 interface VehicleRepositoryInterface
 {
-    public function find(Uuid $id): ?Vehicle;
+    public function findById(Uuid $id): ?VehicleInterface;
 
-    public function save(Vehicle $vehicle): void;
+    public function add(VehicleInterface $vehicle): void;
 
-    public function delete(Vehicle $vehicle): void;
-
-    /** @return Vehicle[] */
-    public function findAll(): array;
+    public function delete(VehicleInterface $vehicle): void;
 }

@@ -20,7 +20,7 @@ final class Vehicle implements VehicleInterface
         private string $model,
         #[ORM\Column(type: 'integer', nullable: true)]
         private ?int $year,
-        #[ORM\Column(type: 'string', length: 17, unique: true, nullable: true)]
+        #[ORM\Column(type: 'vehicle_chassis', length: 17, unique: true, nullable: true)]
         private ?Chassis $chassis,
         #[ORM\Column(name: 'color', type: 'string', length: 255)]
         private ?string $color,

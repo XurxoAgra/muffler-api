@@ -26,7 +26,7 @@ final readonly class Chassis
         }
     }
 
-    public function toString(): string
+    public function value(): string
     {
         return $this->value;
     }

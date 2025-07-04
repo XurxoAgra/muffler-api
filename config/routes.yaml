@@ -1,0 +1,3 @@
+vehicle_context:
+    resource: 'context/Vehicle/routes.yaml'
+    prefix: /api

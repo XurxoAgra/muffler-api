@@ -1,10 +1,12 @@
 doctrine:
+    dbal:
+        types:
+            vehicle_chassis: 'Muffler\Vehicle\Infrastructure\Persistence\Doctrine\DBAL\Types\ChassisType'
     orm:
         mappings:
             Vehicle:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/Vehicle/Infrastructure/Doctrine/Entity'
-                prefix: 'Muffler\Vehicle\Infrastructure\Doctrine\Entity'
+                dir: '%kernel.project_dir%/src/Vehicle/Domain/Entity'
+                prefix: 'Muffler\Vehicle\Domain\Entity'
                 alias: Vehicle
-

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Muffler\Vehicle\Application\Create;
 
 use Muffler\Vehicle\Domain\Entity\Vehicle;
@@ -13,14 +15,15 @@ readonly class CreateVehicleHandler
 {
     public function __construct(
         private VehicleRepositoryInterface $vehicleRepository,
-    ) {}
+    ) {
+    }
 
     public function __invoke(CreateVehicleCommand $command): void
     {
         $now = new \DateTimeImmutable();
 
         $vehicle = new Vehicle(
-            id: Uuid::fromString($command->id),
+            id: Uuid::uuid4(),
             brand: $command->brand,
             model: $command->model,
             year: $command->year,

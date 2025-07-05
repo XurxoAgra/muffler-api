@@ -1,5 +1,5 @@
 ### VEHICLE ###
 vehicle_create:
-    path: /api/vehicles
-    controller: App\Vehicle\Infrastructure\Controller\Persist\VehicleCreateController
+    path: /vehicles
+    controller: Muffler\Vehicle\Infrastructure\Controller\Persist\VehicleCreateController
     methods: [POST]

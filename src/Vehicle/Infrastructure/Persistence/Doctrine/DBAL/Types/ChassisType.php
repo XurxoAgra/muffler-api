@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Muffler\Vehicle\Infrastructure\Persistence\Doctrine\DBAL\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
@@ -8,11 +10,11 @@ use Muffler\Vehicle\Domain\ValueObject\Chassis;
 
 class ChassisType extends StringType
 {
-    private CONST NAME = 'VEHICLE_CHASSIS';
+    private const NAME = 'VEHICLE_CHASSIS';
 
     public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): mixed
     {
-        if ($value === null) {
+        if (null === $value) {
             return null;
         }
 
@@ -25,7 +27,7 @@ class ChassisType extends StringType
 
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Chassis
     {
-        if ($value === null || $value instanceof Chassis) {
+        if (null === $value || $value instanceof Chassis) {
             return $value;
         }
 

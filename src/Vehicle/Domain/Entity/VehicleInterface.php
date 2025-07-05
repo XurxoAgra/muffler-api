@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Muffler\Vehicle\Domain\Entity;
 
 use Muffler\Vehicle\Domain\ValueObject\Chassis;

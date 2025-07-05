@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Muffler\Vehicle\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,10 +12,10 @@ use Ramsey\Uuid\UuidInterface;
 
 readonly class VehicleRepository implements VehicleRepositoryInterface
 {
-
     public function __construct(
         private EntityManagerInterface $em,
-    ) {}
+    ) {
+    }
 
     public function findById(UuidInterface $id): ?VehicleInterface
     {

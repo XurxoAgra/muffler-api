@@ -1,19 +1,17 @@
 <?php
 
-namespace Muffler\Vehicle\Application\Create;
+declare(strict_types=1);
 
-use Ramsey\Uuid\Uuid;
+namespace Muffler\Vehicle\Application\Create;
 
 readonly class CreateVehicleCommand
 {
     public function __construct(
-        public string  $id,
-        public string  $brand,
-        public string  $model,
-        public ?int    $year,
+        public string $brand,
+        public string $model,
+        public ?int $year,
         public ?string $chassis,
         public ?string $color,
     ) {
-        Uuid::fromString($this->id);
     }
 }

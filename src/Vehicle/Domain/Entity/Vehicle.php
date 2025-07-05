@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Muffler\Vehicle\Domain\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Muffler\Vehicle\Domain\ValueObject\Chassis;
 use Ramsey\Uuid\UuidInterface;
-use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Entity]
 final class Vehicle implements VehicleInterface
 {
     public function __construct(
@@ -28,7 +29,7 @@ final class Vehicle implements VehicleInterface
         private \DateTimeImmutable $createdAt,
         #[ORM\Column(type: 'datetime_immutable')]
         private \DateTimeImmutable $updatedAt,
-        #[ORM\Column(type: 'datetime_immutable')]
+        #[ORM\Column(type: 'datetime_immutable', nullable: true, options: ['default' => null])]
         private ?\DateTimeImmutable $deletedAt,
     ) {
     }

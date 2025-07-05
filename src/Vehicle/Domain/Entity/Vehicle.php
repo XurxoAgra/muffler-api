@@ -2,29 +2,46 @@
 
 declare(strict_types=1);
 
-namespace App\Vehicle\Domain\Entity;
+namespace Muffler\Vehicle\Domain\Entity;
 
-use App\Vehicle\Domain\ValueObject\Chassis;
-use Ramsey\Uuid\Uuid;
+use Doctrine\ORM\Mapping as ORM;
+use Muffler\Vehicle\Domain\ValueObject\Chassis;
+use Ramsey\Uuid\UuidInterface;
 
-final readonly class Vehicle
+#[ORM\Entity]
+final class Vehicle implements VehicleInterface
 {
     public function __construct(
-        private Uuid $uuid,
+        #[ORM\Id]
+        #[ORM\Column(type: 'uuid', unique: true)]
+        private UuidInterface $id,
+        #[ORM\Column(name: 'brand', type: 'string', length: 255)]
         private string $brand,
+        #[ORM\Column(name: 'model', type: 'string', length: 255)]
         private string $model,
+        #[ORM\Column(type: 'integer', nullable: true)]
         private ?int $year,
-        private Chassis $chassis,
+        #[ORM\Column(type: 'vehicle_chassis', length: 17, unique: true, nullable: true)]
+        private ?Chassis $chassis,
+        #[ORM\Column(name: 'color', type: 'string', length: 255)]
         private ?string $color,
+        #[ORM\Column(type: 'datetime_immutable')]
         private \DateTimeImmutable $createdAt,
+        #[ORM\Column(type: 'datetime_immutable')]
         private \DateTimeImmutable $updatedAt,
-        private \DateTimeImmutable $deletedAt,
+        #[ORM\Column(type: 'datetime_immutable', nullable: true, options: ['default' => null])]
+        private ?\DateTimeImmutable $deletedAt,
     ) {
     }
 
-    public function getUuid(): Uuid
+    public function getId(): UuidInterface
     {
-        return $this->uuid;
+        return $this->id;
+    }
+
+    public function setId(UuidInterface $id): void
+    {
+        $this->id = $id;
     }
 
     public function getBrand(): string
@@ -32,9 +49,19 @@ final readonly class Vehicle
         return $this->brand;
     }
 
+    public function setBrand(string $brand): void
+    {
+        $this->brand = $brand;
+    }
+
     public function getModel(): string
     {
         return $this->model;
+    }
+
+    public function setModel(string $model): void
+    {
+        $this->model = $model;
     }
 
     public function getYear(): ?int
@@ -42,9 +69,19 @@ final readonly class Vehicle
         return $this->year;
     }
 
-    public function getChassis(): Chassis
+    public function setYear(?int $year): void
+    {
+        $this->year = $year;
+    }
+
+    public function getChassis(): ?Chassis
     {
         return $this->chassis;
+    }
+
+    public function setChassis(?Chassis $chassis): void
+    {
+        $this->chassis = $chassis;
     }
 
     public function getColor(): ?string
@@ -52,9 +89,19 @@ final readonly class Vehicle
         return $this->color;
     }
 
+    public function setColor(?string $color): void
+    {
+        $this->color = $color;
+    }
+
     public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): void
+    {
+        $this->createdAt = $createdAt;
     }
 
     public function getUpdatedAt(): \DateTimeImmutable
@@ -62,8 +109,18 @@ final readonly class Vehicle
         return $this->updatedAt;
     }
 
-    public function getDeletedAt(): \DateTimeImmutable
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    public function getDeletedAt(): ?\DateTimeImmutable
     {
         return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeImmutable $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 }

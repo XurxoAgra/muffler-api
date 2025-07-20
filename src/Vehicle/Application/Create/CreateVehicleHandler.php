@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Muffler\Vehicle\Application\Create;
 
 use Muffler\Vehicle\Domain\Entity\Vehicle;
+use Muffler\Vehicle\Domain\Entity\VehicleInterface;
 use Muffler\Vehicle\Domain\Entity\VehicleRepositoryInterface;
 use Muffler\Vehicle\Domain\ValueObject\Chassis;
 use Ramsey\Uuid\Uuid;
@@ -22,7 +23,7 @@ readonly class CreateVehicleHandler
      * @param CreateVehicleCommand $command
      * @return void
      */
-    public function __invoke(CreateVehicleCommand $command): void
+    public function __invoke(CreateVehicleCommand $command): VehicleInterface
     {
         $vehicle = new Vehicle(
             id: Uuid::uuid4(),
@@ -37,5 +38,7 @@ readonly class CreateVehicleHandler
         );
 
         $this->vehicleRepository->add($vehicle);
+
+        return $vehicle;
     }
 }

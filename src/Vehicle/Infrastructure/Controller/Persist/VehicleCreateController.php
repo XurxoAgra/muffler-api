@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
+use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\ExceptionInterface;
 
 #[AsController]
@@ -37,8 +38,10 @@ final readonly class VehicleCreateController extends BaseController
             color: $vehicleDto->color,
         );
 
-        $this->bus->dispatch($command);
+        $vehicle = $this->bus->dispatch(
+            new Envelope($command)
+        );
 
-        return new JsonResponse(Response::HTTP_CREATED);
+        return new JsonResponse(VehicleDto::create($vehicle),Response::HTTP_CREATED);
     }
 }

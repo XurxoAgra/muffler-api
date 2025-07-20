@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Muffler\Shared\Infrastructure\Controller;
 
+use Muffler\Shared\Infrastructure\Bus\SynchronousBus;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 readonly class BaseController
 {
     public function __construct(
-        protected MessageBusInterface $bus,
+        protected SynchronousBus $bus,
         protected SerializerInterface $serializer,
         protected ValidatorInterface $validator,
     ) {

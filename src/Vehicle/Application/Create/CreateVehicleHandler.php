@@ -18,19 +18,21 @@ readonly class CreateVehicleHandler
     ) {
     }
 
+    /**
+     * @param CreateVehicleCommand $command
+     * @return void
+     */
     public function __invoke(CreateVehicleCommand $command): void
     {
-        $now = new \DateTimeImmutable();
-
         $vehicle = new Vehicle(
             id: Uuid::uuid4(),
-            brand: $command->brand,
-            model: $command->model,
-            year: $command->year,
-            chassis: $command->chassis ? new Chassis($command->chassis) : null,
-            color: $command->color,
-            createdAt: $now,
-            updatedAt: $now,
+            brand: $command->getBrand(),
+            model: $command->getModel(),
+            year: $command->getYear(),
+            chassis: $command->getChassis() ? new Chassis($command->chassis) : null,
+            color: $command->getColor(),
+            createdAt: new \DateTimeImmutable(),
+            updatedAt: new \DateTimeImmutable(),
             deletedAt: null,
         );
 

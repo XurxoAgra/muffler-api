@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Muffler\Vehicle\Application\Create;
 
 use Muffler\Vehicle\Domain\Entity\Vehicle;
+use Muffler\Vehicle\Domain\Entity\VehicleInterface;
 use Muffler\Vehicle\Domain\Entity\VehicleRepositoryInterface;
 use Muffler\Vehicle\Domain\ValueObject\Chassis;
 use Ramsey\Uuid\Uuid;
@@ -18,22 +19,26 @@ readonly class CreateVehicleHandler
     ) {
     }
 
-    public function __invoke(CreateVehicleCommand $command): void
+    /**
+     * @param CreateVehicleCommand $command
+     * @return void
+     */
+    public function __invoke(CreateVehicleCommand $command): VehicleInterface
     {
-        $now = new \DateTimeImmutable();
-
         $vehicle = new Vehicle(
             id: Uuid::uuid4(),
-            brand: $command->brand,
-            model: $command->model,
-            year: $command->year,
-            chassis: $command->chassis ? new Chassis($command->chassis) : null,
-            color: $command->color,
-            createdAt: $now,
-            updatedAt: $now,
+            brand: $command->getBrand(),
+            model: $command->getModel(),
+            year: $command->getYear(),
+            chassis: $command->getChassis() ? new Chassis($command->chassis) : null,
+            color: $command->getColor(),
+            createdAt: new \DateTimeImmutable(),
+            updatedAt: new \DateTimeImmutable(),
             deletedAt: null,
         );
 
         $this->vehicleRepository->add($vehicle);
+
+        return $vehicle;
     }
 }

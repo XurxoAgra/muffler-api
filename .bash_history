@@ -15,3 +15,20 @@ clear
 git push
 xit
 exit
+clear
+clear
+punit
+./vendor/bin/phpunit
+./vendor/bin/phpunit
+clear
+./vendor/bin/phpunit
+clear
+./vendor/bin/phpunit
+./vendor/bin/phpunit
+./vendor/bin/phpunit
+./vendor/bin/phpunit
+./vendor/bin/phpunit
+./vendor/bin/phpunit
+./vendor/bin/phpunit
+clear
+exit

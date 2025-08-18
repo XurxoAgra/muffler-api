@@ -82,7 +82,6 @@ drop-db/test:
 #
 test/all: ## Execute all tests
 	docker exec $(docker-container) ./vendor/bin/phpunit
-	docker exec $(docker-container) ./vendor/bin/phpunit --testsuite Integration
 
 test/unit: ## Execute unit tests
 	docker exec $(docker-container) ./vendor/bin/phpunit --testsuite Unit

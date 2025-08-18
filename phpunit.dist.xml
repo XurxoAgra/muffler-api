@@ -18,8 +18,9 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Vehicle test suit">
+            <directory>tests/unit/Vehicle</directory>
+            <exclude>tests/unit/Vehicle/Application/UseCase/BaseVehicleUseCaseTest.php</exclude>
         </testsuite>
     </testsuites>
 

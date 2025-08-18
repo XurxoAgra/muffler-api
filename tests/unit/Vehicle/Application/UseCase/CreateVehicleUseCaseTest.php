@@ -1,6 +1,6 @@
 <?php
 
-namespace Muffler\Tests\Unit\Vehicle\Application\UseCase;
+namespace Muffler\Tests\unit\Vehicle\Application\UseCase;
 
 use Muffler\Tests\common\Support\Builder\Vehicle\VehicleBuilder;
 use Muffler\Vehicle\Application\Create\CreateVehicleHandler;

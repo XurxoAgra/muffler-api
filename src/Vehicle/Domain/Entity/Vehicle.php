@@ -6,9 +6,10 @@ namespace Muffler\Vehicle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Muffler\Vehicle\Domain\ValueObject\Chassis;
+use Muffler\Vehicle\Infrastructure\Persistence\Doctrine\VehicleRepository;
 use Ramsey\Uuid\UuidInterface;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: VehicleRepository::class)]
 final class Vehicle implements VehicleInterface
 {
     public function __construct(

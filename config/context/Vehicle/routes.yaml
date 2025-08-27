@@ -3,3 +3,7 @@ vehicle_create:
     path: /vehicles
     controller: Muffler\Vehicle\Infrastructure\Controller\Persist\VehicleCreateController
     methods: [POST]
+vehicle_get_collection:
+    path: /vehicles
+    controller: Muffler\Vehicle\Infrastructure\Controller\Provide\VehicleGetCollectionController
+    methods: [GET]

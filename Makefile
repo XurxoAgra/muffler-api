@@ -44,6 +44,7 @@ rebuild: ## Reset/Reinstall project containers and install dependencies
 
 bash: ## Start bash console inside the container
 	docker exec -u www-data -it $(docker-container) /bin/bash
+  ##docker exec -u www-data -it muffler-api-webserver /bin/bash
 
 #
 # Database
@@ -84,7 +85,7 @@ test/all: ## Execute all tests
 	docker exec $(docker-container) ./vendor/bin/phpunit
 
 test/unit: ## Execute unit tests
-	docker exec $(docker-container) ./vendor/bin/phpunit --testsuite Unit
+	docker exec $(docker-container) ./vendor/bin/phpunit --testsuite unit
 
 test/integration: ## Execute integration tests
 	docker exec $(docker-container) ./vendor/bin/phpunit --testsuite Integration

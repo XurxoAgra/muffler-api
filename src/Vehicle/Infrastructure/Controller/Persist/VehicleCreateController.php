@@ -18,10 +18,6 @@ use Symfony\Component\Messenger\Exception\ExceptionInterface;
 #[AsController]
 final readonly class VehicleCreateController extends BaseController
 {
-    /**
-     * @throws ExceptionInterface
-     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
-     */
     public function __invoke(Request $request): JsonResponse
     {
         $validationGroups = [

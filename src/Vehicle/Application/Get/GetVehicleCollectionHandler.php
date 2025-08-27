@@ -9,11 +9,18 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 #[AsMessageHandler]
 readonly class GetVehicleCollectionHandler
 {
+    /**
+     * @param VehicleRepositoryInterface $vehicleRepository
+     */
     public function __construct(
       private VehicleRepositoryInterface $vehicleRepository
     ) {
     }
 
+    /**
+     * @param GetVehicleCollectionCommand $command
+     * @return PaginatorInterface
+     */
     public function __invoke(GetVehicleCollectionCommand $command): PaginatorInterface
     {
         return $this->vehicleRepository->paginate($command->page, $command->limit);

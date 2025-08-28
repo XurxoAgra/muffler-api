@@ -11,9 +11,9 @@ interface VehicleRepositoryInterface
 {
     public function findById(Uuid $id): ?VehicleInterface;
 
-    public function add(VehicleInterface $vehicle): void;
+    public function add(Vehicle $vehicle): void;
 
-    public function delete(VehicleInterface $vehicle): void;
+    public function delete(Vehicle $vehicle): void;
 
     public function paginate(int $page, int $limit): PaginatorInterface;
 }

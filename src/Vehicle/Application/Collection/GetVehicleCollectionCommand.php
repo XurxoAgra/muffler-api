@@ -1,6 +1,6 @@
 <?php
 
-namespace Muffler\Vehicle\Application\Get;
+namespace Muffler\Vehicle\Application\Collection;
 
 use Muffler\Shared\Application\Support\Command\BaseCollectionCommand;
 

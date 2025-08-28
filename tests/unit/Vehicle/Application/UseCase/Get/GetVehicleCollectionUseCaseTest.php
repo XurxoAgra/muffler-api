@@ -4,7 +4,7 @@ namespace Muffler\Tests\unit\Vehicle\Application\UseCase\Get;
 
 use Muffler\Shared\Application\Support\Paginator\Paginator;
 use Muffler\Tests\unit\Vehicle\Application\UseCase\BaseVehicleUseCaseTest;
-use Muffler\Vehicle\Application\Get\GetVehicleCollectionHandler;
+use Muffler\Vehicle\Application\Collection\GetVehicleCollectionHandler;
 
 class GetVehicleCollectionUseCaseTest extends BaseVehicleUseCaseTest
 {

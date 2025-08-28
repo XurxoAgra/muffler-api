@@ -9,7 +9,6 @@ use Muffler\Shared\Application\Support\Paginator\Paginator;
 use Muffler\Shared\Application\Support\Paginator\PaginatorInterface;
 use Muffler\Shared\Domain\Exception\NotFoundException;
 use Muffler\Vehicle\Domain\Entity\Vehicle;
-use Muffler\Vehicle\Domain\Entity\VehicleInterface;
 use Muffler\Vehicle\Domain\Entity\VehicleRepositoryInterface;
 use Ramsey\Uuid\UuidInterface;
 
@@ -20,42 +19,42 @@ readonly class VehicleRepository implements VehicleRepositoryInterface
     ) {
     }
 
-    public function findById(UuidInterface $id): ?VehicleInterface
+    public function findById(UuidInterface $id): ?Vehicle
     {
-        $vehicle = $this->em->getRepository(VehicleInterface::class)->find($id);
+        $vehicle = $this->em->getRepository(Vehicle::class)->find($id);
 
-        return $vehicle instanceof VehicleInterface ? $vehicle : null;
+        return $vehicle instanceof Vehicle ? $vehicle : null;
     }
 
-    public function findByIdOrFail(UuidInterface $id): VehicleInterface
+    public function findByIdOrFail(UuidInterface $id): Vehicle
     {
         $vehicle = $this->findById($id);
 
-        if (!($vehicle instanceof VehicleInterface)) {
-            throw NotFoundException::withIdentifier(VehicleInterface::class, $id->toString());
+        if (!($vehicle instanceof Vehicle)) {
+            throw NotFoundException::withIdentifier(Vehicle::class, $id->toString());
         }
 
         return $vehicle;
     }
 
-    public function add(VehicleInterface $vehicle): void
+    public function add(Vehicle $vehicle): void
     {
         $this->em->persist($vehicle);
         $this->em->flush();
     }
 
-    public function update(VehicleInterface $vehicle): void
+    public function update(Vehicle $vehicle): void
     {
         if (null === $this->findByIdOrFail($vehicle->getId())) {
-            throw NotFoundException::withIdentifier(VehicleInterface::class, $vehicle->getId()->toString());
+            throw NotFoundException::withIdentifier(Vehicle::class, $vehicle->getId()->toString());
         }
 
         $this->em->persist($vehicle);
     }
 
-    public function delete(VehicleInterface $vehicle): void
+    public function delete(Vehicle $vehicle): void
     {
-        $vehicle = $this->em->getRepository(VehicleInterface::class)->find($vehicle->getId());
+        $vehicle = $this->em->getRepository(Vehicle::class)->find($vehicle->getId());
 
         if ($vehicle) {
             $this->em->remove($vehicle);

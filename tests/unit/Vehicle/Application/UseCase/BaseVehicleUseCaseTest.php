@@ -3,7 +3,7 @@
 namespace Muffler\Tests\unit\Vehicle\Application\UseCase;
 
 use Muffler\Vehicle\Application\Create\CreateVehicleCommand;
-use Muffler\Vehicle\Application\Get\GetVehicleCollectionCommand;
+use Muffler\Vehicle\Application\Collection\GetVehicleCollectionCommand;
 use Muffler\Vehicle\Domain\Entity\Vehicle;
 use Muffler\Vehicle\Domain\Entity\VehicleRepositoryInterface;
 use PHPUnit\Framework\MockObject\Exception;

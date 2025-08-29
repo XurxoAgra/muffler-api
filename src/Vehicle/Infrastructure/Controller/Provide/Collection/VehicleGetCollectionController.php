@@ -1,9 +1,9 @@
 <?php
 
-namespace Muffler\Vehicle\Infrastructure\Controller\Provide;
+namespace Muffler\Vehicle\Infrastructure\Controller\Provide\Collection;
 
 use Muffler\Shared\Infrastructure\Controller\BaseController;
-use Muffler\Vehicle\Application\Get\GetVehicleCollectionCommand;
+use Muffler\Vehicle\Application\Collection\GetVehicleCollectionCommand;
 use Muffler\Vehicle\Infrastructure\Dto\VehicleDto;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

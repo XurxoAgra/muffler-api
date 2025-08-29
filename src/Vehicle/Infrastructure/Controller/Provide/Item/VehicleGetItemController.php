@@ -19,6 +19,6 @@ final readonly class VehicleGetItemController extends BaseController
             new Envelope(new GetVehicleItemCommand(Uuid::fromString($id)))
         );
 
-        dd($vehicle);
+        return new JsonResponse(VehicleDto::create($vehicle), 200);
     }
 }

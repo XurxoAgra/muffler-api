@@ -2,7 +2,7 @@
 
 namespace Muffler\Vehicle\Application\Collection;
 
-use Muffler\Shared\Application\Support\Command\BaseCollectionCommand;
+use Muffler\Shared\Application\Command\BaseCollectionCommand;
 
 class GetVehicleCollectionCommand extends BaseCollectionCommand
 {

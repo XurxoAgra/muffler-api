@@ -2,6 +2,7 @@
 
 namespace Muffler\Vehicle\Application\Item;
 
+use Muffler\Vehicle\Domain\Entity\VehicleInterface;
 use Muffler\Vehicle\Domain\Entity\VehicleRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -19,8 +20,8 @@ readonly class GetVehicleItemHandler
     /**
      * @param GetVehicleItemCommand $command
      */
-    public function __invoke(GetVehicleItemCommand $command)
+    public function __invoke(GetVehicleItemCommand $command): ?VehicleInterface
     {
-        return $this->vehicleRepository->findById($command->getId());
+         return $this->vehicleRepository->findByIdOrFail($command->getId());
     }
 }

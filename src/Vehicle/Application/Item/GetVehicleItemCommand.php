@@ -2,20 +2,8 @@
 
 namespace Muffler\Vehicle\Application\Item;
 
-use Ramsey\Uuid\UuidInterface;
+use Muffler\Shared\Application\Command\BaseItemCommand;
 
-class GetVehicleItemCommand
+readonly class GetVehicleItemCommand extends BaseItemCommand
 {
-    public function __construct(
-        protected UuidInterface $id
-    ) {
-    }
-
-    /**
-     * @return UuidInterface
-     */
-    public function getId(): UuidInterface
-    {
-        return $this->id;
-    }
 }

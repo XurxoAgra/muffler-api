@@ -1,6 +1,6 @@
 <?php
 
-namespace Muffler\Shared\Application\Support\Command;
+namespace Muffler\Shared\Application\Command;
 
 class BaseCollectionCommand
 {

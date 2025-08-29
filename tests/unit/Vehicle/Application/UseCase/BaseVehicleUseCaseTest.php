@@ -1,8 +1,9 @@
 <?php
 
-namespace Muffler\Tests\Unit\Vehicle\Application\UseCase;
+namespace Muffler\Tests\unit\Vehicle\Application\UseCase;
 
 use Muffler\Vehicle\Application\Create\CreateVehicleCommand;
+use Muffler\Vehicle\Application\Collection\GetVehicleCollectionCommand;
 use Muffler\Vehicle\Domain\Entity\Vehicle;
 use Muffler\Vehicle\Domain\Entity\VehicleRepositoryInterface;
 use PHPUnit\Framework\MockObject\Exception;
@@ -29,6 +30,14 @@ abstract class BaseVehicleUseCaseTest extends TestCase
             $vehicle->getYear(),
             $vehicle->getChassis()->value(),
             $vehicle->getColor(),
+        );
+    }
+
+    protected function getVehicleCollectionCommand(): GetVehicleCollectionCommand
+    {
+        return new GetVehicleCollectionCommand(
+            2,
+            2,
         );
     }
 }
